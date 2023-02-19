@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>circlegr.svg</file>
+        <file>Button.qml</file>
+        <file>Clock.qml</file>
+        <file>eoqttrace.h</file>
+        <file>main.cpp</file>
+        <file>stopwatchengine.cpp</file>
+        <file>stopwatchengine.h</file>
+    </qresource>
+</RCC>
