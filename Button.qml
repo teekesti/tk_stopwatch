@@ -43,7 +43,7 @@
 ****************************************************************************/
 
 
-import QtQuick //1.0
+import QtQuick 2.4
 
 Rectangle {
     //identifier of the item

@@ -1,8 +1,8 @@
 import com.gmail.kesti.tero.stopwatchengine 1.0
 //import Button
-import QtQuick //1.0
+import QtQuick 2.9
+import QtQml 2.3
 
-//import QtMobility.sensors 1.0
 
 
 Rectangle {
@@ -13,48 +13,9 @@ Rectangle {
     property int lapTimeListWidth: width - clockWidth
     property int fontSize: 0.04 * (width > height ? height : width)
 
-    // The following was an attempt to change the layout when the
-    // device is rotated between landscape and portrait orientations.
-    // It didn't quite work, so it is commented out.
-
-    //    states: [
-    //        State {
-    //            name: "Vertical"
-
-    //            PropertyChanges {
-    //                target: clockbuttonarea
-    //                width: window.width
-    //                height: width
-    //                anchors.top: window.top
-
-    //            }
-    //            PropertyChanges {
-    //                target: lapTimeListContainer
-    //                anchors.top: clockbuttonarea.bottom
-    //                width: window.width
-
-    //            }
-    //        }
-    //    ]
-
-    //    onWidthChanged: {
-    //        console.log(" new window width: ", width);
-    //        if (window.width < window.height)
-    //        {
-    //            console.log("entering vertical state")
-    //            window.state = "Vertical"
-    //        }
-    //        else {
-    //            window.state = "*"
-    //        }
-    //    }
-
-
     StopwatchEngine {
         id: myStopWatchEngine
         onLapTimesSaved: {
-
-            //            console.log(fileName)
             messageButton.label = "Lap times saved to " + fileName
             messageButton.visible = true
             saveLapTimesButton.buttonEnabled = false
@@ -62,7 +23,6 @@ Rectangle {
         onErrorOccurred : {
             messageButton.label = errorMsg
             messageButton.visible = true
-
         }
     }
 
@@ -79,7 +39,6 @@ Rectangle {
             seconds: myStopWatchEngine.seconds
             z: 1 // keep on top of buttons
             height: parent.height < parent.width ? parent.height : parent.width
-
             scale: 1
             clip: true
             width:  height
@@ -197,8 +156,19 @@ Rectangle {
                 horizontalAlignment: Text.AlignHCenter
                 width: parent.width
                 font.pointSize: window.fontSize
+            }
+        }
 
-
+        Component {
+            id: lapTimeDelegate
+            Text
+            {
+                text: (index + 1) + ".\t" + display;
+                font.pointSize: window.fontSize
+                color: lapTimeDelegate.ListView.isCurrentItem ? "red"
+                                                              : "black"
+                horizontalAlignment: Text.AlignHCenter
+                width: parent.width
             }
         }
 
@@ -212,42 +182,20 @@ Rectangle {
             anchors.rightMargin: 0
             anchors.left: parent.left
             anchors.leftMargin: 0
-            Component {
-                id: lapTimeDelegate
-                Text
-                {
-                    text: (index + 1) + ".\t" + display;
-                    font.pointSize: window.fontSize
-                    color: lapTimeDelegate.ListView.isCurrentItem ? "red"
-                                                                  : "black"
-                    horizontalAlignment: Text.AlignHCenter
-                    width: parent.width
-                }
-
-            }
-
             anchors.top: currentLapRectangle.bottom
             anchors.bottom: parent.bottom
-
             model: myStopWatchEngine.LapTimeModel
             delegate: lapTimeDelegate
-
         } //ListView
 
         Button {
             id: saveLapTimesButton
             z: 1
-
             buttonEnabled: false //!myStopWatchEngine.running
             visible: false
             buttonWidth: parent.width //30//1.1 * label.width
-            //            buttonHeight: 10//1.1 * label.height
-            //            anchors.horizontalCenter: parent.horizontalCenter
-            //            anchors.top: lapTimeListView.bottom
-
             anchors.bottom: parent.bottom
             buttonColor: buttonEnabled ? "lightgreen" : myPalette.button
-
             label: "Save Lap Times"
             labelSize:  window.fontSize
             onButtonClick: {
@@ -263,14 +211,8 @@ Rectangle {
         visible: false
         buttonWidth: window.width
         anchors.verticalCenter: window.verticalCenter
-        //        buttonHeight: 150
-
         buttonColor: "lightyellow"
         onButtonClick: visible = false
-
-        //Animate the scale property change
-        //        Behavior on visible { NumberAnimation{ duration: 100 } }
-
     }
 } // window
 

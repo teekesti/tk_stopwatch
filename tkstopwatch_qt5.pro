@@ -20,6 +20,7 @@ QML_IMPORT_MAJOR_VERSION = 1
 include(deployment.pri)
 
 DISTFILES += \
+    Button.qml \
     tkstopwatch.png \
     tkstopwatch.svg \
     Doxyfile
