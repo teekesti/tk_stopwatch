@@ -3,10 +3,6 @@
         <file>main.qml</file>
         <file>circlegr.svg</file>
         <file>Clock.qml</file>
-        <file>eoqttrace.h</file>
-        <file>main.cpp</file>
-        <file>stopwatchengine.cpp</file>
-        <file>stopwatchengine.h</file>
         <file>Button.qml</file>
     </qresource>
 </RCC>
