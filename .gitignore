@@ -1,0 +1,4 @@
+.qmake*
+.qtc*
+tkstopwatch-docs/
+*.pro.user
