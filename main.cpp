@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     //engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     QQuickView view;
     view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl(QStringLiteral("qrc:/main.qml")));
+    view.setSource(QUrl(QStringLiteral("qrc:/QML/main.qml")));
     view.show();
     return app.exec();
 }

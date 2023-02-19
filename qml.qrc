@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>circlegr.svg</file>
-        <file>Clock.qml</file>
-        <file>Button.qml</file>
+        <file>QML/main.qml</file>
+        <file>QML/circlegr.svg</file>
+        <file>QML/Clock.qml</file>
+        <file>QML/Button.qml</file>
     </qresource>
 </RCC>
