@@ -1,5 +1,4 @@
 import com.gmail.kesti.tero.stopwatchengine 1.0
-//import Button
 import QtQuick 2.9
 import QtQml 2.3
 
